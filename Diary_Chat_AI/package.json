@@ -1,0 +1,33 @@
+{
+  "name": "diary-chat-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "test": "node tests/dictation.mjs && node tests/backend.mjs && node tests/auth.mjs && node tests/migration.mjs && node tests/admin.mjs && node tests/admin-actions.mjs",
+    "setup": "node scripts/setup.mjs",
+    "test:http": "node tests/http-smoke.mjs",
+    "admin:bind": "node scripts/bind-admin.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.3",
+    "lucide-react": "1.31.0",
+    "next": "16.4.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  }
+}
