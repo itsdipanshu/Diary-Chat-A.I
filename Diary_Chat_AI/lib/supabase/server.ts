@@ -9,4 +9,4 @@ export async function authClient(){
 }
 export async function getIdentity(){if(!authConfigured())return null;const client=await authClient();const {data:{user},error}=await client.auth.getUser();if(error){console.error('[Supabase getIdentity error]',error.message);return null;}if(!user||!user.email_confirmed_at)return null;return {userId:user.id,emailVerified:true,email:user.email||'',fullName:user.user_metadata?.full_name||user.user_metadata?.name||null};}
 
-export async function getUser(){const user=await getIdentity();return user&&accessState(user.userId)==='active'?user:null;}
+export async function getUser(){const user=await getIdentity();if(!user)return null;return (await accessState(user.userId))==='active'?user:null;}
